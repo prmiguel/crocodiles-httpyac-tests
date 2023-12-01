@@ -1,0 +1,15 @@
+{
+  "name": "crocodiles-httpyac-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:prod": "httpyac ./http/public/* --all -e prod --junit > test-result.xml"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "httpyac": "^6.10.0"
+  }
+}

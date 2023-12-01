@@ -1,7 +1,8 @@
 tasks:
   - name: setup
     before: |
-      npm install -g httpyac
+      corepack enable
+      pnpm install
 vscode:
   extensions:
     - anweber.vscode-httpyac
