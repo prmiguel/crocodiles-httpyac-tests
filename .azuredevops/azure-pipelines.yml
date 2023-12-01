@@ -1,0 +1,18 @@
+---
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: |
+    npm i
+    npm run test:prod
+  displayName: 'Run httpyac Tests'
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: 'test-result.xml'
+    failTaskOnFailedTests: true
+    testRunTitle: 'httpyac Tests'
