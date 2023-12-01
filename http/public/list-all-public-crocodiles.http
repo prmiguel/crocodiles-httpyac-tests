@@ -1,0 +1,5 @@
+### List all public crocodiles
+GET {{CROCODILES_API_URL}}/public/crocodiles/
+
+?? status == 200
+?? js response.parsedBody.length == 8
