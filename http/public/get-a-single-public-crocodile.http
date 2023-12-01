@@ -1,4 +1,4 @@
-### List all public crocodiles
+### Get a single public crocodile
 @crocodileId = 1
 GET {{CROCODILES_API_URL}}/public/crocodiles/{{crocodileId}}
 
