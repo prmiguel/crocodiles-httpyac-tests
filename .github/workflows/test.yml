@@ -18,7 +18,6 @@ jobs:
       - run: npm run test:prod || true
       - uses: dorny/test-reporter@v1
         if: always()
-        id: test-report
         with:
           name: httpYac Tests
           path: test-result.xml
@@ -27,22 +26,4 @@ jobs:
           fail-on-empty: false
       - name: Add results to job summary
         if: always()
-        run: node -e "
-          const fs = require('fs');
-          const xml = fs.readFileSync('test-result.xml', 'utf8');
-          const total = (xml.match(/tests=\"(\d+)\"/) || [])[1] || 'N/A';
-          const failures = (xml.match(/failures=\"(\d+)\"/) || [])[1] || 'N/A';
-          const errors = (xml.match(/errors=\"(\d+)\"/) || [])[1] || 'N/A';
-          const suite = (xml.match(/name=\"([^\"]+)\"/) || [])[1] || '';
-          const summary = [
-            '## httpYac Test Results',
-            '',
-            '| Metric | Value |',
-            '|--------|-------|',
-            '| Total tests | ' + total + ' |',
-            '| Failures | ' + failures + ' |',
-            '| Errors | ' + errors + ' |',
-            '',
-          ].join('\n');
-          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, summary);
-        "
+        run: node -e 'const fs=require("fs");const x=fs.readFileSync("test-result.xml","utf8");const t=(x.match(/tests="(\d+)"/)||[])[1]||"N/A";const f=(x.match(/failures="(\d+)"/)||[])[1]||"N/A";const e=(x.match(/errors="(\d+)"/)||[])[1]||"N/A";fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,"## httpYac Test Results\n\n| Metric | Value |\n|--------|-------|\n| Total | "+t+" |\n| Failures | "+f+" |\n| Errors | "+e+" |\n")'
