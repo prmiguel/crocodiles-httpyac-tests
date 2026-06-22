@@ -56,21 +56,21 @@
         var TestCases = new Array();
         var cur;
         
-    cur = TestCases['http/public/get-a-single-public-crocodile.http.Get a single public crocodile'] = new Array();
+    cur = TestCases['http/public/get-a-single-public-crocodile.http.Get a single post'] = new Array();
     
         cur['file'] = 'http/public/get-a-single-public-crocodile.http';
     
-        cur['timestamp'] = '2026-06-22T09:47:42.557Z';
+        cur['timestamp'] = '2026-06-22T09:58:37.376Z';
     
-        cur['title'] = 'Get a single public crocodile';
+        cur['title'] = 'Get a single post';
     
-    cur = TestCases['http/public/list-all-public-crocodiles.http.List all public crocodiles'] = new Array();
+    cur = TestCases['http/public/list-all-public-crocodiles.http.List all posts'] = new Array();
     
         cur['file'] = 'http/public/list-all-public-crocodiles.http';
     
-        cur['timestamp'] = '2026-06-22T09:47:42.836Z';
+        cur['timestamp'] = '2026-06-22T09:58:37.508Z';
     
-        cur['title'] = 'List all public crocodiles';
+        cur['title'] = 'List all posts';
     </script><script type="text/javascript" language="JavaScript">
         function displayProperties (name) {
           var win = window.open('','JUnitSystemProperties','scrollbars=1,resizable=1');
@@ -118,13 +118,13 @@
             <th>Success rate</th>
             <th>Time</th>
          </tr>
-         <tr valign="top" class="Failure">
+         <tr valign="top" class="">
             <td>4</td>
-            <td>2</td>
             <td>0</td>
             <td>0</td>
-            <td>50.00%</td>
-            <td>0.346</td>
+            <td>0</td>
+            <td>100.00%</td>
+            <td>0.143</td>
          </tr>
       </table>
       <table border="0" width="95%">
@@ -150,23 +150,23 @@
             <th nowrap>Time Stamp</th>
             <th>Host</th>
          </tr>
-         <tr valign="top" class="Failure">
+         <tr valign="top" class="">
             <td><a href="#http/public/get-a-single-public-crocodile.http">http/public/get-a-single-public-crocodile.http</a></td>
             <td>2</td>
-            <td>1</td>
             <td>0</td>
             <td>0</td>
-            <td>0.274</td>
+            <td>0</td>
+            <td>0.129</td>
             <td></td>
             <td></td>
          </tr>
-         <tr valign="top" class="Failure">
+         <tr valign="top" class="">
             <td><a href="#http/public/list-all-public-crocodiles.http">http/public/list-all-public-crocodiles.http</a></td>
             <td>2</td>
-            <td>1</td>
             <td>0</td>
             <td>0</td>
-            <td>0.072</td>
+            <td>0</td>
+            <td>0.014</td>
             <td></td>
             <td></td>
          </tr>
@@ -183,13 +183,13 @@
             <th nowrap>Time Stamp</th>
             <th>Host</th>
          </tr>
-         <tr valign="top" class="Failure">
-            <td><a href="#Get a single public crocodile">Get a single public crocodile</a></td>
+         <tr valign="top" class="">
+            <td><a href="#Get a single post">Get a single post</a></td>
             <td>2</td>
-            <td>1</td>
             <td>0</td>
             <td>0</td>
-            <td>0.274</td>
+            <td>0</td>
+            <td>0.129</td>
             <td></td>
             <td></td>
          </tr>
@@ -206,19 +206,19 @@
             <th nowrap>Time Stamp</th>
             <th>Host</th>
          </tr>
-         <tr valign="top" class="Failure">
-            <td><a href="#List all public crocodiles">List all public crocodiles</a></td>
+         <tr valign="top" class="">
+            <td><a href="#List all posts">List all posts</a></td>
             <td>2</td>
-            <td>1</td>
             <td>0</td>
             <td>0</td>
-            <td>0.072</td>
+            <td>0</td>
+            <td>0.014</td>
             <td></td>
             <td></td>
          </tr>
       </table><a href="#top">Back to top</a><p></p>
       <p></p>
-      <hr size="1" width="95%" align="left"><a name="Get a single public crocodile"></a><h3>TestCase Get a single public crocodile</h3>
+      <hr size="1" width="95%" align="left"><a name="Get a single post"></a><h3>TestCase Get a single post</h3>
       <table class="details" border="0" cellpadding="5" cellspacing="2" width="95%">
          <tr valign="top">
             <th>Name</th>
@@ -230,29 +230,19 @@
             <td>status == 200</td>
             <td>Success</td>
             <td></td>
-            <td>0.137</td>
+            <td>0.064</td>
          </tr>
-         <tr valign="top" class="Error">
-            <td>response.parsedBody.id == {{crocodileId}}</td>
-            <td>Failure</td>
-            <td>TypeError response.parsedBody.id == {{crocodileId}}<code><br><br>{"message":"Cannot read properties of undefined (reading 'id')","name":"TypeError","stack":"TypeError:
-                  Cannot read properties of undefined (reading 'id')\n    at Object.userJS (/home/runner/work/crocodiles-httpyac-tests/crocodiles-httpyac-tests/http/public/get-a-single-public-crocodile.http:7:40)\n
-                  at cr (/home/runner/work/crocodiles-httpyac-tests/crocodiles-httpyac-tests/node_modules/httpyac/dist/index.js:119:2730)\n
-                  at Object.Fo [as evalExpression] (/home/runner/work/crocodiles-httpyac-tests/crocodiles-httpyac-tests/node_modules/httpyac/dist/index.js:119:3324)\n
-                  at Object.ji [as action] (/home/runner/work/crocodiles-httpyac-tests/crocodiles-httpyac-tests/node_modules/httpyac/dist/index.js:2:50359)\n
-                  at jt.trigger (/home/runner/work/crocodiles-httpyac-tests/crocodiles-httpyac-tests/node_modules/hookpoint/dist/index.js:1:2889)\n
-                  at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n 
-                  at async /home/runner/work/crocodiles-httpyac-tests/crocodiles-httpyac-tests/node_modules/httpyac/dist/index.js:2:48437\n
-                  at async /home/runner/work/crocodiles-httpyac-tests/crocodiles-httpyac-tests/node_modules/httpyac/dist/index.js:2:21289\n
-                  at async Object.action (/home/runner/work/crocodiles-httpyac-tests/crocodiles-httpyac-tests/node_modules/httpyac/dist/index.js:2:48351)\n
-                  at async o.trigger (/home/runner/work/crocodiles-httpyac-tests/crocodiles-httpyac-tests/node_modules/hookpoint/dist/index.js:1:2872)"}</code></td>
-            <td>0.137</td>
+         <tr valign="top" class="">
+            <td>response.parsedBody.id == 1</td>
+            <td>Success</td>
+            <td></td>
+            <td>0.064</td>
          </tr>
       </table>
-      <div class="Properties"><a href="javascript:displayProperties('http/public/get-a-single-public-crocodile.http.Get a single public crocodile');">
+      <div class="Properties"><a href="javascript:displayProperties('http/public/get-a-single-public-crocodile.http.Get a single post');">
             Properties »
             </a></div>
-      <p></p><a href="#top">Back to top</a><a name="List all public crocodiles"></a><h3>TestCase List all public crocodiles</h3>
+      <p></p><a href="#top">Back to top</a><a name="List all posts"></a><h3>TestCase List all posts</h3>
       <table class="details" border="0" cellpadding="5" cellspacing="2" width="95%">
          <tr valign="top">
             <th>Name</th>
@@ -264,26 +254,16 @@
             <td>status == 200</td>
             <td>Success</td>
             <td></td>
-            <td>0.036</td>
+            <td>0.007</td>
          </tr>
-         <tr valign="top" class="Error">
-            <td>response.parsedBody.length == 8</td>
-            <td>Failure</td>
-            <td>TypeError response.parsedBody.length == 8<code><br><br>{"message":"Cannot read properties of undefined (reading 'length')","name":"TypeError","stack":"TypeError:
-                  Cannot read properties of undefined (reading 'length')\n    at Object.userJS (/home/runner/work/crocodiles-httpyac-tests/crocodiles-httpyac-tests/http/public/list-all-public-crocodiles.http:6:40)\n
-                  at cr (/home/runner/work/crocodiles-httpyac-tests/crocodiles-httpyac-tests/node_modules/httpyac/dist/index.js:119:2730)\n
-                  at Object.Fo [as evalExpression] (/home/runner/work/crocodiles-httpyac-tests/crocodiles-httpyac-tests/node_modules/httpyac/dist/index.js:119:3324)\n
-                  at Object.ji [as action] (/home/runner/work/crocodiles-httpyac-tests/crocodiles-httpyac-tests/node_modules/httpyac/dist/index.js:2:50359)\n
-                  at jt.trigger (/home/runner/work/crocodiles-httpyac-tests/crocodiles-httpyac-tests/node_modules/hookpoint/dist/index.js:1:2889)\n
-                  at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n 
-                  at async /home/runner/work/crocodiles-httpyac-tests/crocodiles-httpyac-tests/node_modules/httpyac/dist/index.js:2:48437\n
-                  at async /home/runner/work/crocodiles-httpyac-tests/crocodiles-httpyac-tests/node_modules/httpyac/dist/index.js:2:21289\n
-                  at async Object.action (/home/runner/work/crocodiles-httpyac-tests/crocodiles-httpyac-tests/node_modules/httpyac/dist/index.js:2:48351)\n
-                  at async o.trigger (/home/runner/work/crocodiles-httpyac-tests/crocodiles-httpyac-tests/node_modules/hookpoint/dist/index.js:1:2872)"}</code></td>
-            <td>0.036</td>
+         <tr valign="top" class="">
+            <td>response.parsedBody.length == 100</td>
+            <td>Success</td>
+            <td></td>
+            <td>0.007</td>
          </tr>
       </table>
-      <div class="Properties"><a href="javascript:displayProperties('http/public/list-all-public-crocodiles.http.List all public crocodiles');">
+      <div class="Properties"><a href="javascript:displayProperties('http/public/list-all-public-crocodiles.http.List all posts');">
             Properties »
             </a></div>
       <p></p><a href="#top">Back to top</a></body>
