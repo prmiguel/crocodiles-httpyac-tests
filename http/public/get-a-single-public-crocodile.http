@@ -1,6 +1,6 @@
-### Get a single post
-@postId = 1
-GET {{CROCODILES_API_URL}}/posts/{{postId}}
+### Get a single public crocodile
+@crocodileId = 1
+GET {{CROCODILES_API_URL}}/public/crocodiles/{{crocodileId}}
 
 ?? status == 200
-?? js response.parsedBody.id == {{postId}}
+?? js response.parsedBody.id == {{crocodileId}}
