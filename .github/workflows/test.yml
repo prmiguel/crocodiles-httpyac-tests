@@ -27,24 +27,22 @@ jobs:
           fail-on-empty: false
       - name: Add results to job summary
         if: always()
-        run: |
-          {
-            echo "## httpYac Test Results"
-            echo ""
-            if [ -f test-result.xml ]; then
-              total=$(grep -oP 'tests="\K[^"]+' test-result.xml | head -1)
-              failures=$(grep -oP 'failures="\K[^"]+' test-result.xml | head -1)
-              errors=$(grep -oP 'errors="\K[^"]+' test-result.xml | head -1)
-              echo "- **Total tests:** ${total:-N/A}"
-              echo "- **Failures:** ${failures:-N/A}"
-              echo "- **Errors:** ${errors:-N/A}"
-              echo ""
-              echo "### Test Details"
-              grep -oP 'name="[^"]*"' test-result.xml | while read -r n; do
-                n=${n#name=\"}; n=${n%\"}
-                echo "- $n"
-              done
-            else
-              echo "Test report not found."
-            fi
-          } >> "$GITHUB_STEP_SUMMARY"
+        run: node -e "
+          const fs = require('fs');
+          const xml = fs.readFileSync('test-result.xml', 'utf8');
+          const total = (xml.match(/tests=\"(\d+)\"/) || [])[1] || 'N/A';
+          const failures = (xml.match(/failures=\"(\d+)\"/) || [])[1] || 'N/A';
+          const errors = (xml.match(/errors=\"(\d+)\"/) || [])[1] || 'N/A';
+          const suite = (xml.match(/name=\"([^\"]+)\"/) || [])[1] || '';
+          const summary = [
+            '## httpYac Test Results',
+            '',
+            '| Metric | Value |',
+            '|--------|-------|',
+            '| Total tests | ' + total + ' |',
+            '| Failures | ' + failures + ' |',
+            '| Errors | ' + errors + ' |',
+            '',
+          ].join('\n');
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, summary);
+        "
