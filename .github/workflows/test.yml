@@ -6,6 +6,9 @@ on:
   push:
     branches: [main]
 
+permissions:
+  contents: write
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -16,6 +19,7 @@ jobs:
           node-version: 22
       - run: npm i
       - run: npm run test:prod || true
+
       - uses: dorny/test-reporter@v1
         if: always()
         with:
@@ -24,6 +28,27 @@ jobs:
           reporter: java-junit
           fail-on-error: false
           fail-on-empty: false
+
       - name: Add results to job summary
         if: always()
         run: node -e 'const fs=require("fs");const x=fs.readFileSync("test-result.xml","utf8");const t=(x.match(/tests="(\d+)"/)||[])[1]||"N/A";const f=(x.match(/failures="(\d+)"/)||[])[1]||"N/A";const e=(x.match(/errors="(\d+)"/)||[])[1]||"N/A";fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,"## httpYac Test Results\n\n| Metric | Value |\n|--------|-------|\n| Total | "+t+" |\n| Failures | "+f+" |\n| Errors | "+e+" |\n")'
+
+      - uses: pl-strflt/junit-xml-to-html@v1
+        if: always()
+        with:
+          input: test-result.xml
+          output: report/index.html
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-report-html
+          path: report/
+
+      - uses: peaceiris/actions-gh-pages@v4
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: report/
+          destination_dir: reports/httpyac
+          keep_files: true
