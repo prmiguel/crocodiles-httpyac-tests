@@ -1,5 +1,5 @@
-### List all public crocodiles
-GET {{CROCODILES_API_URL}}/public/crocodiles/
+### List all posts
+GET {{CROCODILES_API_URL}}/posts
 
 ?? status == 200
-?? js response.parsedBody.length == 8
+?? js response.parsedBody.length == 100
